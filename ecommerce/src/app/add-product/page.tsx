@@ -1,29 +1,5 @@
+import {addProduct} from "@/actions/productActions/actions";
 import SubmitButton from "@/components/SubmitButton";
-import { prisma } from "@/lib/prisma";
-import { redirect } from "next/navigation";
-async function addProduct(formData: FormData) {
-  "use server";
-  console.log("formmmmmmmmmm");
-  console.log(formData.get("name"));
-  console.log(formData.get("description"));
-  console.log(formData.get("imageUrl"));
-  console.log(formData.get("price"));
-
-  const name = formData.get("name")?.toString();
-  const description = formData.get("description")?.toString();
-  const imageUrl = formData.get("imageUrl")?.toString();
-  const price = Number(formData.get("price") || 0);
-
-  if (!name || !description || !imageUrl || !price) {
-    throw Error("Missing required fields");
-  }
-
-  await prisma.product.create({
-    data: { name, description, imageUrl, price },
-  });
-
-  redirect("/");
-}
 
 export default function AddProductPage() {
   return (
