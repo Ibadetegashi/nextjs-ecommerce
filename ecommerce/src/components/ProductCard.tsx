@@ -22,7 +22,7 @@ export default function ProductCard(product: Product) {
               ? `${product.name.substring(0, 30)}...`
               : product.name}
           </h2>
-          <p className="min-h-[100px] max-w-[250px] text-gray-500">
+          <p className="min-h-[100px] max-h-[100px] max-w-[250px] overflow-hidden break-words text-gray-500">
             {product.description.length > 100
               ? `${product.description.substring(0, 100)}...`
               : product.description}
